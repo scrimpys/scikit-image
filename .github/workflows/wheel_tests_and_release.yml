@@ -17,6 +17,9 @@ permissions:
 jobs:
   call-workflow-build-wheels:
     uses: ./.github/workflows/wheels_recipe.yml
+    with:
+      CIBW_BEFORE_ALL: >
+        python -m pip install --pre --upgrade --extra-index-url https://pypi.anaconda.org/scientific-python-nightly-wheels/simple Cython
 
   deploy:
     name: Release
